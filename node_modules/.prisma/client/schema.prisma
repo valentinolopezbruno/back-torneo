@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model categoria {
+  id         Int    @id @default(autoincrement())
+  idTorneo   Int
+  nombre     String @db.VarChar(255)
+  dificultad String @db.VarChar(250)
+  torneo torneo? @relation(fields: [idTorneo], references: [id])
+}
+
+model cronograma {
+  id          Int @id @default(autoincrement())
+  idCategoria Int
+  idPartido   Int
+  idEquipo    Int
+  fecha       Int
+  hora        Int
+}
+
+model Equipo {
+  id          Int    @id @default(autoincrement())
+  nombre      String @db.VarChar(255)
+  idCategoria Int
+  jugadores Jugador[]
+}
+
+model Jugador {
+  id      Int    @id @default(autoincrement())
+  roll    Int
+  nombre  String @db.VarChar(255)
+  dni     String @db.VarChar(250)
+  imagen  String @db.VarChar(255)
+
+  idEqupo Int? 
+  equipo Equipo? @relation(fields: [idEqupo], references: [id])
+}
+
+model partido {
+  id      Int      @id @default(autoincrement())
+  estado  Int
+  equipo1 Int
+  equipo2 Int
+  hora    String   @db.VarChar(255)
+  fecha   DateTime @db.Date
+}
+
+model torneo {
+  id     Int    @id @default(autoincrement())
+  nombre String @db.VarChar(255)
+  categorias categoria[]
+}
