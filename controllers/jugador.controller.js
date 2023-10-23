@@ -35,6 +35,9 @@ exports.actualizarJugador = async (req, res) => {
 
 exports.eliminarJugador = async (req, res) => {
   const jugador = req.body;
+  console.log("jugador")
+  console.log(req.body)
+
   const jugadorEliminado = await prisma.jugador.delete({  where: { id: jugador.id } });
   res.json(jugadorEliminado);
 };
