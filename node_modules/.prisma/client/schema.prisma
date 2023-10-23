@@ -27,6 +27,12 @@ model cronograma {
 model Equipo {
   id          Int    @id @default(autoincrement())
   nombre      String @db.VarChar(255)
+  descripcion      String @db.VarChar(255)
+  localidad      String @db.VarChar(255)
+  jugados Int
+  perdidos Int
+  ganados Int
+  empatados Int
   idCategoria Int
   jugadores Jugador[]
 }
