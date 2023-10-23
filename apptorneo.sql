@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-10-2023 a las 17:01:32
+-- Tiempo de generación: 23-10-2023 a las 19:23:50
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -74,16 +74,22 @@ INSERT INTO `cronograma` (`id`, `idCategoria`, `idPartido`, `idEquipo`, `fecha`,
 CREATE TABLE `equipo` (
   `id` int(255) NOT NULL,
   `nombre` varchar(255) NOT NULL,
-  `idCategoria` int(255) NOT NULL
+  `idCategoria` int(255) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `localidad` varchar(255) NOT NULL,
+  `jugados` int(255) NOT NULL,
+  `perdidos` int(255) NOT NULL,
+  `ganados` int(255) NOT NULL,
+  `empatados` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `equipo`
 --
 
-INSERT INTO `equipo` (`id`, `nombre`, `idCategoria`) VALUES
-(1, 'Raspá y Gana', 1),
-(2, 'Ricos Momentos', 1);
+INSERT INTO `equipo` (`id`, `nombre`, `idCategoria`, `descripcion`, `localidad`, `jugados`, `perdidos`, `ganados`, `empatados`) VALUES
+(1, 'Raspá y Gana', 1, 'Equipo de Amigos', 'Oliva, Cordoba', 10, 3, 6, 1),
+(2, 'Ricos Momentos', 1, '', '', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
