@@ -9,3 +9,19 @@ exports.getEquiposJugadores = async (req, res) => {
     });
     res.json(jugadores);
 };
+
+
+exports.editarEquipo = async (req, res) => {
+    var equipo = req.body
+    
+    var equipoEditado = await prisma.equipo.update({
+        where:{id:equipo.id},
+        data:{
+            nombre:equipo.nombre,
+            localidad:equipo.localidad,
+            descripcion:equipo.descripcion,
+            
+        }
+    });
+    res.json(equipoEditado);
+};
